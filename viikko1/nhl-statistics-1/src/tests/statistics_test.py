@@ -1,5 +1,5 @@
 import unittest
-from statistics import Statistics
+from statistics import Statistics, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -68,12 +68,42 @@ class TestStatistics(unittest.TestCase):
 
         self.assertTrue(player_lists_are_equal(team1, team2))
 
-    def test_top_returns_correct_list(self):
+    def test_top_returns_correct_list_without_key(self):
         top3a = self.statistics.top(2)
         top3b = [
             Player("Gretzky", "EDM", 35, 89),
             Player("Lemieux", "PIT", 45, 54),
             Player("Yzerman", "DET", 42, 56)
+        ]
+
+        self.assertTrue(player_lists_are_equal(top3a, top3b))
+
+    def test_top_returns_correct_list_by_points(self):
+        top3a = self.statistics.top(2, SortBy.POINTS)
+        top3b = [
+            Player("Gretzky", "EDM", 35, 89),
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Yzerman", "DET", 42, 56)
+        ]
+
+        self.assertTrue(player_lists_are_equal(top3a, top3b))
+
+    def test_top_returns_correct_list_by_goals(self):
+        top3a = self.statistics.top(2, SortBy.GOALS)
+        top3b = [
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Kurri", "EDM", 37, 53)
+        ]
+
+        self.assertTrue(player_lists_are_equal(top3a, top3b))
+
+    def test_top_returns_correct_list_by_assists(self):
+        top3a = self.statistics.top(2, SortBy.ASSISTS)
+        top3b = [
+            Player("Gretzky", "EDM", 35, 89),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Lemieux", "PIT", 45, 54)
         ]
 
         self.assertTrue(player_lists_are_equal(top3a, top3b))
