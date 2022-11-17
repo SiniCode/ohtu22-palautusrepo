@@ -21,7 +21,9 @@ def main():
             players.append(player)
 
     print(f"Finnish players {now.strftime('%d.%m.%Y %H:%M:%S')}")
+    print()
 
+    players.sort(reverse=True, key=lambda player : player.goals + player.assists)
     for player in players:
         print(player)
 

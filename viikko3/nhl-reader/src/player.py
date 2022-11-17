@@ -6,4 +6,6 @@ class Player:
         self.assists = assists
 
     def __str__(self):
-        return f"{self.name} ({self.team}): {self.goals} goals, {self.assists} assists"
+        player = f"{self.name} ({self.team})"
+        points = self.goals + self.assists
+        return f"{player:<30}{self.goals:>2} + {self.assists:<2} = {points}"
