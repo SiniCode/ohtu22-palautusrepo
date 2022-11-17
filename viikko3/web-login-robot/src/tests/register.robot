@@ -1,5 +1,6 @@
 *** Settings ***
 Resource  resource.robot
+Resource  login_resource.robot
 Suite Setup  Open And Configure Browser
 Suite Teardown  Close Browser
 Test Setup  Reset Application And Open Register Page
@@ -7,32 +8,46 @@ Test Setup  Reset Application And Open Register Page
 
 *** Test Cases ***
 Register With Valid Username And Password
-    Set Username  kalle
-    Set Password  kalle123
-    Confirm Password  kalle123
-    Submit Credentials
+    Input Credentials  kalle  kalle123  kalle123
+    Click Register Button
     Registration Should Succeed
 
 Register With Too Short Username And Valid Password
-    Set Username  ap
-    Set Password  hamahakk1
-    Confirm Password  hamahakk1
-    Submit Credentials
+    Input Credentials  ap  hamahakk1  hamahakk1
+    Click Register Button
     Registration Should Fail With Message  Username is too short
 
 Register With Valid Username And Too Short Password
-    Set Username  nalle
-    Set Password  puh0
-    Confirm Password  puh0
-    Submit Credentials
+    Input Credentials  nalle  puh0  puh0
+    Click Register Button
     Registration Should Fail With Message  Password is too short
 
 Register With Nonmatching Password And Password Confirmation
-    Set Username  nalle
-    Set Password  puuskupuh0
-    Confirm Password  puhvelielain0
-    Submit Credentials
+    Input Credentials  nalle  puuskupuh0  puhvelielain0
+    Click Register Button
     Registration Should Fail With Message  Passwords do not match
+
+Login After Successful Registration
+    Input Credentials  kalle  kalle123  kalle123
+    Click Register Button
+    Registration Should Succeed
+    Go To Login Page
+    Page Should Contain  Login
+    Set Username  kalle
+    Set Password  kalle123
+    Submit Credentials
+    Login Should Succeed
+
+Login After Failed Registration
+    Input Credentials  nalle  puh  puh
+    Click Register Button
+    Registration Should Fail With Message  Password is too short
+    Go To Login Page
+    Page Should Contain  Login
+    Set Username  nalle
+    Set Password  puh
+    Submit Credentials
+    Login Should Fail With Message  Invalid username or password
 
 
 *** Keywords ***
@@ -41,19 +56,25 @@ Reset Application And Open Register Page
     Go To Register Page
     Register Page Should Be Open
 
-Set Username
+Set New Username
     [Arguments]  ${username}
     Input Text  username  ${username}
 
-Set Password
+Set New Password
     [Arguments]  ${password}
     Input Password  password  ${password}
 
-Confirm Password
+Confirm New Password
     [Arguments]  ${password}
     Input Password  password_confirmation  ${password}
 
-Submit Credentials
+Input Credentials
+    [Arguments]  ${username}  ${password1}  ${password2}
+    Set New Username  ${username}
+    Set New Password  ${password1}
+    Confirm New Password  ${password2}
+
+Click Register Button
     Click Button  Register
 
 Registration Should Succeed
