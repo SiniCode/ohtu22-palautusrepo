@@ -1,0 +1,8 @@
+# Retrospektiivitekniikat
+Retrospektiivin idea on miettiä tiimin kesken, missä edellisen iteraation aikana onnistuttiin ja missä olisi kehitettävää ja miten näitä ajatuksia voisi soveltaa seuraavan iteraation aikana.
+
+## Start, Stop, Continue, More of, Less of Wheel
+Retrospektiivin vetäjä piirtää tiimin näkyville ympyrän, jossa on viisi sektoria. Hän rohkaisee tiimiä miettimään mennyttä iteraatiota ja kommentoimaan, mitä jatkossa pitäisi aloittaa, mikä lopettaa, mitä pitäisi jatkaa, mitä pitäisi olla enemmän ja mitä vähemmän. Ajatukset kirjataan näkyviin omille sektoreilleen ympyrään. Lopuksi päätetään yhdessä konkreettisista tavoista siirtää ajatukset käytäntöön seuraavan iteraation aikana. Kesto: 10-25 minuuttia
+
+## Glad, Sad, Mad
+Tiimin jäsenet kirjoittavat pienille lapuille ajatuksia ja havaintoja päättyneestä iteraatiosta. Viimeistään 15 minuutin kuluttua ajatukset esitellään muille ja ryhmitellään näkyville sen mukaan, onko kyseessä asia, joka on tehnyt iloiseksi, surulliseksi vai vihaiseksi. Retrospektiivin vetäjä ryhmittelee vielä samaan asiaan liittyvät ajatukset yhteen. Sitten tiimin jäsenet äänestävät, mistä asioista he haluavat keskustella lisää. Jäljellä oleva aika käytetään retrospektiivin vetäjän johtamaan keskusteluun, jossa asioita käydään läpi äänimäärän mukaisessa järjestyksessä. Erityisesti keskitytään miettimään, miten asiat tulisi ottaa huomioon seuraavan iteraation aikana. Maksimikesto: 60 minuuttia
