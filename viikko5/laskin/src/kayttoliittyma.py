@@ -13,6 +13,9 @@ class Laskutoimitus:
         self._sovelluslogiikka = sovelluslogiikka
         self._syotelukija = syotelukija
 
+    def kumoa(self):
+        self._sovelluslogiikka.aseta_arvo(self._sovelluslogiikka.edellinen_tulos)
+
 class Summa(Laskutoimitus):
     def __init__(self, sovelluslogiikka, syotelukija):
         super().__init__(sovelluslogiikka, syotelukija)
@@ -39,7 +42,7 @@ class Kumoa(Laskutoimitus):
         super().__init__(sovelluslogiikka, syotelukija)
 
     def suorita(self):
-        pass
+        self.kumoa()
 
 
 class Kayttoliittyma:
